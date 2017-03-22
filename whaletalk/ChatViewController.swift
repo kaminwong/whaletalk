@@ -15,7 +15,6 @@ class ChatViewController: UIViewController {
     
     public var messages = [Message]()
     private var bottomConstraint: NSLayoutConstraint!
-    private var newMessageIndex: NSIndexPath!
     public let cellIdentifier = "Cell"
     
     override func viewDidLoad() {
@@ -94,7 +93,7 @@ class ChatViewController: UIViewController {
         NSLayoutConstraint.activate(tableViewConstraints)
         
         //keyboard observer
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleSingleTap(_:)))
@@ -103,8 +102,12 @@ class ChatViewController: UIViewController {
     }
 //END viewdidload
     
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.scrolltoBottom()
+    }
+    
     //keyboard oberserver func
-    func keyboardWillShow(notification: NSNotification) {
+    func keyboardWillShow(_ notification: NSNotification) {
         //if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             //let window = self.view.window?.frame {
             // We're not just minusing the kb height from the view height because
@@ -116,6 +119,7 @@ class ChatViewController: UIViewController {
         //else {
         //    debugPrint("We're showing the keyboard and either the keyboard size or window is nil: panic widely.")
         //}
+        
         updateBottomConstraint(_:notification)
     }
     
@@ -151,8 +155,12 @@ class ChatViewController: UIViewController {
     func updateBottomConstraint(_ notification: NSNotification){
         if let userInfo = notification.userInfo,
             let animationduration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double,
-            let keyboardSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let frame = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect {
+            //let keyboardSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             UIView.animate(withDuration: animationduration, animations: {self.view.layoutIfNeeded()})
+            let newFrame = view.convert(frame, from: (UIApplication.shared.delegate?.window)!)
+            bottomConstraint.constant = newFrame.origin.y - view.frame.height
+            /*
             if bottomConstraint.constant == 0{
                 bottomConstraint.constant = self.view.frame.origin.y - keyboardSize.height
                 //self.view.frame.origin.y = bottomConstraint.constant
@@ -160,6 +168,7 @@ class ChatViewController: UIViewController {
             else{
                 bottomConstraint.constant += keyboardSize.height
             }
+            */
         }
     }
     
@@ -169,11 +178,11 @@ class ChatViewController: UIViewController {
         let message = Message()
         message.text = text
         message.incoming = false
+        newMessageField.text = ""
         messages.append(message)
         tableView.reloadData()
-        newMessageIndex = NSIndexPath(row: tableView.numberOfRows(inSection: 0)-1, section: 0)
-        tableView.scrollToRow(at: newMessageIndex as IndexPath, at: .bottom, animated: true)
-        
+        tableView.scrolltoBottom()
+        view.endEditing(true)
     }
 
 }
