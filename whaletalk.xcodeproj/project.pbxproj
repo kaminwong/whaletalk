@@ -15,6 +15,7 @@
 		D3BDC6051E7BCDF100E86AB8 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BDC6041E7BCDF100E86AB8 /* Message.swift */; };
 		D3BDC6071E7BF28E00E86AB8 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BDC6061E7BF28E00E86AB8 /* ChatCell.swift */; };
 		D3C57D121E82DF0300E61EDC /* UITableView+Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C57D111E82DF0300E61EDC /* UITableView+Scroll.swift */; };
+		D3C57D141E83D0EC00E61EDC /* CDHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C57D131E83D0EC00E61EDC /* CDHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		D3BDC6041E7BCDF100E86AB8 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D3BDC6061E7BF28E00E86AB8 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		D3C57D111E82DF0300E61EDC /* UITableView+Scroll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+Scroll.swift"; path = "../UITableView+Scroll.swift"; sourceTree = "<group>"; };
+		D3C57D131E83D0EC00E61EDC /* CDHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				D3BDC5F61E7BC4AE00E86AB8 /* Main.storyboard */,
 				D3BDC6041E7BCDF100E86AB8 /* Message.swift */,
 				D3C57D111E82DF0300E61EDC /* UITableView+Scroll.swift */,
+				D3C57D131E83D0EC00E61EDC /* CDHelper.swift */,
 				D3BDC5F91E7BC4AE00E86AB8 /* Assets.xcassets */,
 				D3BDC5FB1E7BC4AE00E86AB8 /* LaunchScreen.storyboard */,
 				D3BDC5FE1E7BC4AE00E86AB8 /* Info.plist */,
@@ -147,6 +150,7 @@
 			files = (
 				D3C57D121E82DF0300E61EDC /* UITableView+Scroll.swift in Sources */,
 				D3BDC6051E7BCDF100E86AB8 /* Message.swift in Sources */,
+				D3C57D141E83D0EC00E61EDC /* CDHelper.swift in Sources */,
 				D3BDC6071E7BF28E00E86AB8 /* ChatCell.swift in Sources */,
 				D3BDC5F51E7BC4AE00E86AB8 /* ChatViewController.swift in Sources */,
 				D3BDC5F31E7BC4AE00E86AB8 /* AppDelegate.swift in Sources */,

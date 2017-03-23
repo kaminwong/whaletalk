@@ -11,4 +11,5 @@ import Foundation
 class Message {
     var text: String?
     var incoming = Bool()
+    var timestamp: Date?
 }
