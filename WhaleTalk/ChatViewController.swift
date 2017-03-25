@@ -16,16 +16,34 @@ class ChatViewController: UIViewController {
     
     fileprivate var sections = [Date: [Message]]()
     fileprivate var dates = [Date]()
+    fileprivate var messages: [Message] = []
     //public var messages = [Message]()
     private var bottomConstraint: NSLayoutConstraint!
     fileprivate let cellIdentifier = "Cell"
     
-    var context: NSManagedObjectContext?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Message")
+        
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            for message in result {
+                addMessage(message: message as! Message)
+            }
+        }
+        catch {
+            print ("we couldn't fetch")
+        }
         // Do any additional setup after loading the view, typically from a nib.
         
+        /*
         var localIncoming = true
         var date = Date(timeIntervalSince1970: 1100000000)
         
@@ -42,6 +60,7 @@ class ChatViewController: UIViewController {
                 date = Date(timeInterval: 60*60*24, since: date)
             }
         }
+        */
         
         //Message Area for typing new messages
         
@@ -201,13 +220,26 @@ class ChatViewController: UIViewController {
     
     func pressedSend(button: UIButton){
         
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
         guard let text = newMessageField.text, text.characters.count > 0 else {return}
-        let message = Message()
+        let message = Message(context: managedContext)
+        //let message = Message()
         message.text = text
         message.incoming = false
-        message.timestamp = Date()
+        message.timestamp = NSDate()
         newMessageField.text = ""
         addMessage(message: message)
+        
+        //save to core data
+        
+        do {
+            try managedContext.save()
+        }
+        catch {
+            print ("there is a problem saving")
+        }
         tableView.reloadData()
         tableView.scrolltoBottom()
         view.endEditing(true)
@@ -216,7 +248,7 @@ class ChatViewController: UIViewController {
     func addMessage(message: Message){
         guard let date = message.timestamp else {return}
         let calendar = Calendar.current
-        let startDay = calendar.startOfDay(for: date)
+        let startDay = calendar.startOfDay(for: date as Date)
         
         var messages = sections[startDay]
         if messages == nil {
