@@ -30,13 +30,14 @@ class ChatViewController: UIViewController {
         let managedContext =
             appDelegate.persistentContainer.viewContext
         
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Message")
-        
         do {
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Message")
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: false)]
             let result = try managedContext.fetch(fetchRequest)
             for message in result {
                 addMessage(message: message as! Message)
             }
+            dates = dates.sorted()
         }
         catch {
             print ("we couldn't fetch")
@@ -208,12 +209,6 @@ class ChatViewController: UIViewController {
             }
             */
             
-            debugPrint("newframe: ", newFrame.origin.y)
-            debugPrint("view.frame.height : ", view.frame.height)
-            debugPrint("frame origin: ", self.view.frame.origin.y)
-            //debugPrint("kayboardSize: ", keyboardSize.height)
-            debugPrint("bottomConstraint: ", bottomConstraint.constant)
-            
             tableView.scrolltoBottom()
         }
     }
@@ -239,6 +234,7 @@ class ChatViewController: UIViewController {
         }
         catch {
             print ("there is a problem saving")
+            return
         }
         tableView.reloadData()
         tableView.scrolltoBottom()
@@ -316,7 +312,7 @@ extension ChatViewController: UITableViewDataSource {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM dd, YYYY"
-        dateLabel.text = formatter.string(from: dates[section])
+        dateLabel.text = formatter.string(from: dates[section] as Date)
         
         paddingView.layer.cornerRadius = 10
         paddingView.layer.masksToBounds = true
