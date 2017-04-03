@@ -37,7 +37,6 @@ class ChatViewController: UIViewController {
             for message in result {
                 addMessage(message: message as! Message)
             }
-            dates = dates.sorted()
         }
         catch {
             print ("we couldn't fetch")
@@ -249,14 +248,36 @@ class ChatViewController: UIViewController {
         var messages = sections[startDay]
         if messages == nil {
             dates.append(startDay as Date)
+            dates = dates.sorted()
             messages = [Message]()
         }
         messages!.append(message)
+        messages!.sort{$0.timestamp!.earlierDate($1.timestamp! as Date) == $0.timestamp! as Date}
         sections[startDay] = messages
     }
 
 }
+
 //END ChatViewController
+
+/*extension Chat: NSManagedObject {
+    //var managedContext: NSManagedObjectContext!
+    var lastMessage:Message? {
+        let request = NSFetchRequest<Message>(entityName: "Message")
+        request.predicate = NSPredicate(format: "chat = %@", self)
+        request.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: false)]
+        request.fetchLimit = 1
+        do {
+            guard let results = try self.managedContext.fetch(request) else
+            {return nil}
+            return results.first
+        }
+        catch {
+            print("Error for Request")
+        }
+        return nil
+    }
+}*/
 
 
 extension ChatViewController: UITableViewDataSource {
