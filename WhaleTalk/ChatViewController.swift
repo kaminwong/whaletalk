@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 class ChatViewController: UIViewController {
+    
 
     private let tableView = UITableView(frame: CGRect.zero, style: .grouped)
     private let newMessageField = UITextView()
@@ -21,14 +22,14 @@ class ChatViewController: UIViewController {
     private var bottomConstraint: NSLayoutConstraint!
     fileprivate let cellIdentifier = "Cell"
     
+    var coreDataStack: CoreDataStack!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-        
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
+        //guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let managedContext = coreDataStack.managedContext
         
         do {
             let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Message")
@@ -214,8 +215,8 @@ class ChatViewController: UIViewController {
     
     func pressedSend(button: UIButton){
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-        let managedContext = appDelegate.persistentContainer.viewContext
+        //guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let managedContext = coreDataStack.managedContext
         
         guard let text = newMessageField.text, text.characters.count > 0 else {return}
         let message = Message(context: managedContext)

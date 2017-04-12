@@ -12,18 +12,19 @@ import CoreData
 class AllChatsViewController: UIViewController {
 
     
-    var context: NSManagedObjectContext?
+    var context: NSManagedObjectContext!
     
-    fileprivate var fetchedResultsController: NSFetchedResultsController<Chat>?
+    fileprivate var fetchedResultsController: NSFetchedResultsController<Chat>!
     fileprivate let tableView = UITableView(frame: CGRect.zero, style: .plain)
     fileprivate let cellIdentifier = "MessageCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         title = "Chats"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "new_chat"), style: .plain, target: self, action: #selector(self.newChat))
         
+        //For the Navigation Bar
         automaticallyAdjustsScrollViewInsets = false
         
         tableView.register(ChatCell.self, forCellReuseIdentifier: cellIdentifier)
@@ -46,14 +47,19 @@ class AllChatsViewController: UIViewController {
             let request = NSFetchRequest<Chat>(entityName: "Chat")
             request.sortDescriptors = [NSSortDescriptor(key: "lastMessageTime", ascending: false)]
             fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+            
+            //monitor changes
             fetchedResultsController?.delegate = self
+            
             do {
                 try fetchedResultsController?.performFetch()
-            } catch {
-                print("There was a problem fetching.")
-            }
+            } catch let error as NSError {
+                print("Fetching error: \(error), \(error.userInfo)")
             }
         }
+        
+        fakeData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -64,13 +70,17 @@ class AllChatsViewController: UIViewController {
     }
     
     func fakeData() {
-        guard let context = context else {return}
+        guard let context = context else {
+            debugPrint("did not enter context")
+            return
+        }
         let chat  = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: context) as? Chat
     }
     
     func configureCell(cell: UITableViewCell, for indexPath: IndexPath) {
-        guard let cell = cell as? ChatCell else {return}
+        let cell = cell as! ChatCell
         let chat = fetchedResultsController?.object(at: indexPath)
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/YY"
         cell.nameLabel.text = "Eliot"
@@ -123,6 +133,26 @@ extension AllChatsViewController: NSFetchedResultsControllerDelegate {
             default:
                 break
             }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
+        case .update:
+            let cell = tableView.cellForRow(at: indexPath!)
+            configureCell(cell: cell!, for: indexPath!)
+            tableView.reloadRows(at: [indexPath!], with: .fade)
+        case .move:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+        }
+        
+        func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>){
+            tableView.endUpdates()
+        }
     }
 }
 

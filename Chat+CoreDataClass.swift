@@ -16,10 +16,10 @@ public class Chat: NSManagedObject {
     var lastMessage: Message? {
         let request: NSFetchRequest<Message> = Message.fetchRequest()
         request.predicate  = NSPredicate(format: "chat = %@", self)
-        request.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: false)]
+        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Message.timestamp), ascending: false)]
         request.fetchLimit = 1
         do {
-            guard let results = try self.managedcontext.fetch(request) as? [Message] else {return nil}
+            let results = try self.managedcontext.fetch(request)
             return results.first
         }
         catch {
