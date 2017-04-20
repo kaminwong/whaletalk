@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav = UINavigationController(rootViewController: vc)
         window!.rootViewController = nav
         vc.context = coreDataStack.managedContext
-        
+        fakeData(context: coreDataStack.managedContext)
         
 
         return true
@@ -53,6 +53,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         coreDataStack.saveContext()
+    }
+    
+    func fakeData(context: NSManagedObjectContext) {
+        let dataSeeded = UserDefaults.standard.bool(forKey: "dataSeeded")
+        guard !dataSeeded else {return}
+        
+        let people = [("John", "Nichols"), ("Matt", "Parker")]
+        for person in people {
+            let contact = NSEntityDescription.insertNewObject(forEntityName: "Contact", into: context) as! Contact
+            contact.firstName = person.0
+            contact.lastName = person.1
+        }
+        do {
+            try context.save()
+        } catch {
+            print("Error Saving")
+        }
+        UserDefaults.standard.object(forKey: "dataSeeded")
     }
 
     // MARK: - Core Data stack

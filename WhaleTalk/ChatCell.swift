@@ -32,7 +32,7 @@ class ChatCell: UITableViewCell {
             nameLabel.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
             
             messageLabel.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor),
-            messageLabel.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+            messageLabel.leadingAnchor.constraint(equalTo: nameLabel.layoutMarginsGuide.leadingAnchor),
             
             dateLabel.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
             dateLabel.firstBaselineAnchor.constraint(equalTo: nameLabel.firstBaselineAnchor)
