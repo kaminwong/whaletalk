@@ -26,6 +26,7 @@
 		D3C57D521E84C78300E61EDC /* DeleteMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C57D511E84C78300E61EDC /* DeleteMessage.swift */; };
 		D3F106B31EA8C36000ED416A /* Chat+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F106B11EA8C36000ED416A /* Chat+CoreDataProperties.swift */; };
 		D3F106B41EA8C36000ED416A /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F106B21EA8C36000ED416A /* Contact+CoreDataProperties.swift */; };
+		D3F106B61EA8DCBE00ED416A /* ChatCreationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F106B51EA8DCBE00ED416A /* ChatCreationDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		D3C57D511E84C78300E61EDC /* DeleteMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteMessage.swift; sourceTree = "<group>"; };
 		D3F106B11EA8C36000ED416A /* Chat+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Chat+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D3F106B21EA8C36000ED416A /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D3F106B51EA8DCBE00ED416A /* ChatCreationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCreationDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				D3C57D4D1E84C65200E61EDC /* UITableView+Scroll.swift */,
 				D3A919A21EA8B89F009A9A64 /* TableViewFetchedResultsDelegate.swift */,
 				D3A919A31EA8B89F009A9A64 /* UIViewController+FillWithView.swift */,
+				D3F106B51EA8DCBE00ED416A /* ChatCreationDelegate.swift */,
 				D3C57D381E84C61000E61EDC /* Main.storyboard */,
 				D3C57D3E1E84C61100E61EDC /* Assets.xcassets */,
 				D3C57D401E84C61100E61EDC /* LaunchScreen.storyboard */,
@@ -178,6 +181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3F106B61EA8DCBE00ED416A /* ChatCreationDelegate.swift in Sources */,
 				D36233C31E929288000D0742 /* AllChatsViewController.swift in Sources */,
 				D3C57D351E84C61000E61EDC /* AppDelegate.swift in Sources */,
 				D3C57D4A1E84C63700E61EDC /* ChatViewController.swift in Sources */,

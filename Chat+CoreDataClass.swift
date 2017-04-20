@@ -27,4 +27,9 @@ public class Chat: NSManagedObject {
         }
         return nil
     }
+    
+    //func add(participant contact: Contact) {
+    //let chat = Chat(context: managedcontext)
+    //chat.addToParticipants(contact)
+    //}
 }

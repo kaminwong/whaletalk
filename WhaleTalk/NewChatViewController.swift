@@ -17,6 +17,8 @@ class NewChatViewController: UIViewController, TableViewFetchedResultsDisplayer 
     fileprivate let cellIdentifier = "ContactCell"
     fileprivate var fetchedResultsDelegate: NSFetchedResultsControllerDelegate?
     
+    var chatCreationDelegate: ChatCreationDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -99,6 +101,14 @@ extension NewChatViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let contact = fetchedResultsController.object(at: indexPath)
         
+        guard let context = context else {return}
+        guard let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: context) as? Chat else
+        {return}
+        
+        chat.addToParticipants(contact)
+        
+        chatCreationDelegate?.created(chat: chat, context: context)
+        dismiss(animated: false, completion: nil)
     }
 }
 

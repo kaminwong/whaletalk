@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AllChatsViewController: UIViewController, TableViewFetchedResultsDisplayer {
+class AllChatsViewController: UIViewController, TableViewFetchedResultsDisplayer, ChatCreationDelegate {
     
     
     var context: NSManagedObjectContext!
@@ -64,6 +64,7 @@ class AllChatsViewController: UIViewController, TableViewFetchedResultsDisplayer
         
         let vc = NewChatViewController()
         vc.context = context
+        vc.chatCreationDelegate = self
         let navVC = UINavigationController(rootViewController: vc)
         present(navVC, animated: true, completion: nil)
         
@@ -87,6 +88,13 @@ class AllChatsViewController: UIViewController, TableViewFetchedResultsDisplayer
         cell.nameLabel.text = "Eliot"
         cell.dateLabel.text = formatter.string(from: Date())
         cell.messageLabel.text = "Hey!"
+    }
+    
+    func created(chat: Chat, context: NSManagedObjectContext) {
+        let vc = ChatViewController()
+        vc.context = context
+        vc.chat = chat
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

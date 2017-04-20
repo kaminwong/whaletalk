@@ -19,22 +19,32 @@ class ChatViewController: UIViewController {
     fileprivate var dates = [Date]()
     fileprivate var messages: [Message] = []
     //public var messages = [Message]()
-    private var bottomConstraint: NSLayoutConstraint!
+    fileprivate var bottomConstraint: NSLayoutConstraint!
     fileprivate let cellIdentifier = "Cell"
     
+    var context: NSManagedObjectContext?
     var coreDataStack: CoreDataStack!
+    
+    var chat: Chat?
+    
+    private enum DataError: Error {
+        case NoChat
+        case NoContext
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-        let managedContext = coreDataStack.managedContext
+        //let managedContext = coreDataStack.managedContext
         
         do {
+            guard let chat = chat else {throw DataError.NoChat}
+            guard let context = context else {throw DataError.NoContext}
             let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Message")
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: false)]
-            let result = try managedContext.fetch(fetchRequest)
+            let result = try context.fetch(fetchRequest)
             for message in result {
                 addMessage(message: message as! Message)
             }
@@ -42,6 +52,7 @@ class ChatViewController: UIViewController {
         catch {
             print ("we couldn't fetch")
         }
+        automaticallyAdjustsScrollViewInsets = false
         // Do any additional setup after loading the view, typically from a nib.
         
         /*
@@ -216,10 +227,10 @@ class ChatViewController: UIViewController {
     func pressedSend(button: UIButton){
         
         //guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-        let managedContext = coreDataStack.managedContext
-        
+        //let managedContext = coreDataStack.managedContext
+        guard let context = context else {return}
         guard let text = newMessageField.text, text.characters.count > 0 else {return}
-        let message = Message(context: managedContext)
+        let message = Message(context: context)
         //let message = Message()
         message.text = text
         message.incoming = false
@@ -230,7 +241,7 @@ class ChatViewController: UIViewController {
         //save to core data
         
         do {
-            try managedContext.save()
+            try context.save()
         }
         catch {
             print ("there is a problem saving")
