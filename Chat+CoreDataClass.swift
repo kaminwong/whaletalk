@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-@objc(Chat)
+//@objc(Chat)
 public class Chat: NSManagedObject {
 
     var managedcontext: NSManagedObjectContext!

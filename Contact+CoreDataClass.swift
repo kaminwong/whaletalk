@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-@objc(Contact)
+//@objc(Contact)
 public class Contact: NSManagedObject {
     
     var sortLetter: String {
