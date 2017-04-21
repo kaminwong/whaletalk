@@ -122,12 +122,16 @@ class ChatViewController: UIViewController {
         tableView.delegate = self
         
         tableView.estimatedRowHeight = 44
+        tableView.backgroundView = UIImageView(image: UIImage(named: "MessageBubble"))
+        tableView.separatorColor = UIColor.clear
+        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
+        tableView.estimatedSectionHeaderHeight = 25
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
         
         let tableViewConstraints: [NSLayoutConstraint] = [
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: newMessageArea.topAnchor)
@@ -138,7 +142,11 @@ class ChatViewController: UIViewController {
         //keyboard observer
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    
+        
+        if let mainContext = context?.parent ?? context{
+            NotificationCenter.default.addObserver(self, selector: "contextUpdated:", name: NSNotification.Name.NSManagedObjectContextDidSave, object: mainContext)
+        }
+        
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleSingleTap(_:)))
         tapRecognizer.numberOfTapsRequired = 1
         view.addGestureRecognizer(tapRecognizer)
@@ -228,6 +236,7 @@ class ChatViewController: UIViewController {
         
         //guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         //let managedContext = coreDataStack.managedContext
+        checkTemporaryContext()
         guard let context = context else {return}
         guard let text = newMessageField.text, text.characters.count > 0 else {return}
         let message = Message(context: context)
@@ -236,7 +245,6 @@ class ChatViewController: UIViewController {
         message.incoming = false
         message.timestamp = NSDate()
         newMessageField.text = ""
-        addMessage(message: message)
         
         //save to core data
         
@@ -247,8 +255,6 @@ class ChatViewController: UIViewController {
             print ("there is a problem saving")
             return
         }
-        tableView.reloadData()
-        tableView.scrolltoBottom()
         view.endEditing(true)
     }
     
@@ -267,10 +273,38 @@ class ChatViewController: UIViewController {
         messages!.sort{$0.timestamp!.earlierDate($1.timestamp! as Date) == $0.timestamp! as Date}
         sections[startDay] = messages
     }
-
+    
+    func contextUpdated(notification: Notification) {
+        guard let set = (notification.userInfo![NSInsertedObjectsKey] as? NSSet) else {return}
+        let objects = set.allObjects
+        for obj in objects {
+            guard let message = obj as? Message else {continue}
+            if message.chat?.objectID == chat?.objectID {
+                addMessage(message: message)
+            }
+        }
+        
+        tableView.reloadData()
+        tableView.scrolltoBottom()
+    }
+    
+    func checkTemporaryContext() {
+        if let mainContext = context?.parent, let chat = chat {
+            let tempContext = context
+            context = mainContext
+            do {
+                try tempContext?.save()
+            } catch {
+                print("Error saving tempContext")
+            }
+            self.chat = mainContext.object(with: chat.objectID) as? Chat
+        }
+    }
 }
 
 //END ChatViewController
+
+
 
 /*extension Chat: NSManagedObject {
     //var managedContext: NSManagedObjectContext!
