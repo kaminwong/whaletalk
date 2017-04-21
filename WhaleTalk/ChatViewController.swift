@@ -53,26 +53,6 @@ class ChatViewController: UIViewController {
             print ("we couldn't fetch")
         }
         automaticallyAdjustsScrollViewInsets = false
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        /*
-        var localIncoming = true
-        var date = Date(timeIntervalSince1970: 1100000000)
-        
-        for i in 0...10{
-            let m = Message()
-            m.text = "This is a longer message"
-            m.incoming = localIncoming
-            m.timestamp = date
-            localIncoming = !localIncoming
-            
-            addMessage(message: m)
-            //messages.append(m)
-            if i%2 == 0 {
-                date = Date(timeInterval: 60*60*24, since: date)
-            }
-        }
-        */
         
         //Message Area for typing new messages
         
@@ -144,7 +124,7 @@ class ChatViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         if let mainContext = context?.parent ?? context{
-            NotificationCenter.default.addObserver(self, selector: "contextUpdated:", name: NSNotification.Name.NSManagedObjectContextDidSave, object: mainContext)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.contextUpdated(notification:)), name: NSNotification.Name.NSManagedObjectContextDidSave, object: mainContext)
         }
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleSingleTap(_:)))
@@ -239,11 +219,13 @@ class ChatViewController: UIViewController {
         checkTemporaryContext()
         guard let context = context else {return}
         guard let text = newMessageField.text, text.characters.count > 0 else {return}
-        let message = Message(context: context)
-        //let message = Message()
+        guard let message = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as? Message else {return}
+        //let message = Message(context: context)
+
         message.text = text
-        message.incoming = false
         message.timestamp = NSDate()
+        message.chat = chat
+        chat?.lastMessageTime = message.timestamp
         newMessageField.text = ""
         
         //save to core data
@@ -300,6 +282,9 @@ class ChatViewController: UIViewController {
             self.chat = mainContext.object(with: chat.objectID) as? Chat
         }
     }
+    deinit{
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 //END ChatViewController
@@ -346,7 +331,7 @@ extension ChatViewController: UITableViewDataSource {
         let messages = getMessages(section: indexPath.section)
         let message = messages[indexPath.row]
         cell.messageLabel.text = message.text
-        cell.incoming(incoming: message.incoming)
+        cell.incoming(incoming: message.isIncoming)
         cell.backgroundColor = UIColor.clear
         
         //remove separator

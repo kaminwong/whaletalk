@@ -12,7 +12,7 @@ import CoreData
 class AllChatsViewController: UIViewController, TableViewFetchedResultsDisplayer, ChatCreationDelegate {
     
     
-    var context: NSManagedObjectContext!
+    var context: NSManagedObjectContext?
     var coreDataStack: CoreDataStack!
     
     fileprivate var fetchedResultsController: NSFetchedResultsController<Chat>!
@@ -52,7 +52,7 @@ class AllChatsViewController: UIViewController, TableViewFetchedResultsDisplayer
             }
         }
         
-        fakeData(context: context)
+        fakeData(context: context!)
     }
     
     override func didReceiveMemoryWarning() {
@@ -75,23 +75,25 @@ class AllChatsViewController: UIViewController, TableViewFetchedResultsDisplayer
     }
     
     func fakeData(context: NSManagedObjectContext) {
-        //guard let context = context else {
-        //    debugPrint("did not enter context")
-        //    return
-        //}
-        let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: context) as! Chat
+
+        let chat = NSEntityDescription.insertNewObject(forEntityName: "Chat", into: context) as? Chat
         
     }
     
     func configureCell(cell: UITableViewCell, for indexPath: IndexPath) {
         let cell = cell as! ChatCell
-        let chat = fetchedResultsController?.object(at: indexPath)
+        let chat = fetchedResultsController.object(at: indexPath)
+        guard let contact = chat.participants?.anyObject() as? Contact else {return}
+        guard let lastMessage = chat.lastMessage,
+            let timestamp = lastMessage.timestamp as Date?,
+            let text = lastMessage.text else {return}
         
         let formatter = DateFormatter()
+        
         formatter.dateFormat = "MM/dd/YY"
-        cell.nameLabel.text = "Eliot"
-        cell.dateLabel.text = formatter.string(from: Date())
-        cell.messageLabel.text = "Hey!"
+        cell.nameLabel.text = contact.fullName
+        cell.dateLabel.text = formatter.string(from: timestamp)
+        cell.messageLabel.text = text
     }
     
     func created(chat: Chat, context: NSManagedObjectContext) {
@@ -118,7 +120,6 @@ extension AllChatsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("dequeue reached")
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         configureCell(cell: cell, for: indexPath)
         return cell

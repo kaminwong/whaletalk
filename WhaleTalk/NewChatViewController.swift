@@ -37,7 +37,7 @@ class NewChatViewController: UIViewController, TableViewFetchedResultsDisplayer 
             let request = NSFetchRequest<Contact>(entityName: "Contact")
             request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Contact.lastName), ascending: true),
                                        NSSortDescriptor(key: #keyPath(Contact.firstName), ascending: true)]
-            fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: #keyPath(Contact.sortLetter), cacheName: "NewChatViewController")
+            fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: #keyPath(Contact.sortLetter), cacheName: nil)
             
             fetchedResultsDelegate = TableViewFetchedResultsDelegate(tableView: tableView, displayer: self)
             fetchedResultsController.delegate = fetchedResultsDelegate

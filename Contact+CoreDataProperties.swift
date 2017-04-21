@@ -2,7 +2,7 @@
 //  Contact+CoreDataProperties.swift
 //  WhaleTalk
 //
-//  Created by WONGKAI MING on 20/4/17.
+//  Created by WONGKAI MING on 21/4/17.
 //  Copyright © 2017年 WONGKAI MING. All rights reserved.
 //
 
@@ -19,6 +19,7 @@ extension Contact {
     @NSManaged public var firstName: String?
     @NSManaged public var lastName: String?
     @NSManaged public var chats: NSSet?
+    @NSManaged public var messages: NSSet?
 
 }
 
@@ -36,5 +37,22 @@ extension Contact {
 
     @objc(removeChats:)
     @NSManaged public func removeFromChats(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for messages
+extension Contact {
+
+    @objc(addMessagesObject:)
+    @NSManaged public func addToMessages(_ value: Message)
+
+    @objc(removeMessagesObject:)
+    @NSManaged public func removeFromMessages(_ value: Message)
+
+    @objc(addMessages:)
+    @NSManaged public func addToMessages(_ values: NSSet)
+
+    @objc(removeMessages:)
+    @NSManaged public func removeFromMessages(_ values: NSSet)
 
 }

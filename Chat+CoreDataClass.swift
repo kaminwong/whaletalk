@@ -11,15 +11,15 @@ import CoreData
 
 //@objc(Chat)
 public class Chat: NSManagedObject {
-
-    var managedcontext: NSManagedObjectContext!
+    
     var lastMessage: Message? {
-        let request: NSFetchRequest<Message> = Message.fetchRequest()
+        let request = NSFetchRequest<Message>(entityName: "Message")
         request.predicate  = NSPredicate(format: "chat = %@", self)
         request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Message.timestamp), ascending: false)]
         request.fetchLimit = 1
         do {
-            let results = try self.managedcontext.fetch(request)
+            guard let results = try self.managedObjectContext?.fetch(request) else {return nil}
+            //let results = try self.managedContext?.fetch(request)
             return results.first
         }
         catch {

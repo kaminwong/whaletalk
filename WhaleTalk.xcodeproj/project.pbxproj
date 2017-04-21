@@ -23,10 +23,11 @@
 		D3C57D4A1E84C63700E61EDC /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C57D491E84C63700E61EDC /* ChatViewController.swift */; };
 		D3C57D4C1E84C64800E61EDC /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C57D4B1E84C64800E61EDC /* MessageCell.swift */; };
 		D3C57D4E1E84C65200E61EDC /* UITableView+Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C57D4D1E84C65200E61EDC /* UITableView+Scroll.swift */; };
-		D3C57D521E84C78300E61EDC /* DeleteMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C57D511E84C78300E61EDC /* DeleteMessage.swift */; };
 		D3F106B31EA8C36000ED416A /* Chat+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F106B11EA8C36000ED416A /* Chat+CoreDataProperties.swift */; };
 		D3F106B41EA8C36000ED416A /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F106B21EA8C36000ED416A /* Contact+CoreDataProperties.swift */; };
 		D3F106B61EA8DCBE00ED416A /* ChatCreationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F106B51EA8DCBE00ED416A /* ChatCreationDelegate.swift */; };
+		D3F106B91EA9EB6300ED416A /* Message+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F106B71EA9EB6300ED416A /* Message+CoreDataClass.swift */; };
+		D3F106BA1EA9EB6300ED416A /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F106B81EA9EB6300ED416A /* Message+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,10 +49,11 @@
 		D3C57D491E84C63700E61EDC /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		D3C57D4B1E84C64800E61EDC /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		D3C57D4D1E84C65200E61EDC /* UITableView+Scroll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Scroll.swift"; sourceTree = "<group>"; };
-		D3C57D511E84C78300E61EDC /* DeleteMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteMessage.swift; sourceTree = "<group>"; };
 		D3F106B11EA8C36000ED416A /* Chat+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Chat+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D3F106B21EA8C36000ED416A /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D3F106B51EA8DCBE00ED416A /* ChatCreationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCreationDelegate.swift; sourceTree = "<group>"; };
+		D3F106B71EA9EB6300ED416A /* Message+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D3F106B81EA9EB6300ED416A /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,8 @@
 		D3C57D281E84C61000E61EDC = {
 			isa = PBXGroup;
 			children = (
+				D3F106B71EA9EB6300ED416A /* Message+CoreDataClass.swift */,
+				D3F106B81EA9EB6300ED416A /* Message+CoreDataProperties.swift */,
 				D3F106B11EA8C36000ED416A /* Chat+CoreDataProperties.swift */,
 				D3F106B21EA8C36000ED416A /* Contact+CoreDataProperties.swift */,
 				D3C57D331E84C61000E61EDC /* WhaleTalk */,
@@ -95,7 +99,6 @@
 				D3A919A01EA8B897009A9A64 /* NewChatViewController.swift */,
 				D3C57D4B1E84C64800E61EDC /* MessageCell.swift */,
 				D36233C01E928E27000D0742 /* ChatCell.swift */,
-				D3C57D511E84C78300E61EDC /* DeleteMessage.swift */,
 				D3C57D4D1E84C65200E61EDC /* UITableView+Scroll.swift */,
 				D3A919A21EA8B89F009A9A64 /* TableViewFetchedResultsDelegate.swift */,
 				D3A919A31EA8B89F009A9A64 /* UIViewController+FillWithView.swift */,
@@ -185,6 +188,7 @@
 				D36233C31E929288000D0742 /* AllChatsViewController.swift in Sources */,
 				D3C57D351E84C61000E61EDC /* AppDelegate.swift in Sources */,
 				D3C57D4A1E84C63700E61EDC /* ChatViewController.swift in Sources */,
+				D3F106B91EA9EB6300ED416A /* Message+CoreDataClass.swift in Sources */,
 				D3A919A81EA8B908009A9A64 /* Contact+CoreDataClass.swift in Sources */,
 				D3F106B41EA8C36000ED416A /* Contact+CoreDataProperties.swift in Sources */,
 				D36233C11E928E27000D0742 /* ChatCell.swift in Sources */,
@@ -194,9 +198,9 @@
 				D3A919A11EA8B897009A9A64 /* NewChatViewController.swift in Sources */,
 				D3C57D4E1E84C65200E61EDC /* UITableView+Scroll.swift in Sources */,
 				D3A919A51EA8B89F009A9A64 /* UIViewController+FillWithView.swift in Sources */,
+				D3F106BA1EA9EB6300ED416A /* Message+CoreDataProperties.swift in Sources */,
 				D3C57D3D1E84C61100E61EDC /* WhaleTalk.xcdatamodeld in Sources */,
 				D3F106B31EA8C36000ED416A /* Chat+CoreDataProperties.swift in Sources */,
-				D3C57D521E84C78300E61EDC /* DeleteMessage.swift in Sources */,
 				D36233BE1E928D92000D0742 /* Chat+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
