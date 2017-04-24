@@ -31,6 +31,7 @@ class AllChatsViewController: UIViewController, TableViewFetchedResultsDisplayer
         
         tableView.register(ChatCell.self, forCellReuseIdentifier: cellIdentifier)
         tableView.tableFooterView = UIView(frame: CGRect.zero)
+        tableView.tableHeaderView = createHeader()
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -102,6 +103,54 @@ class AllChatsViewController: UIViewController, TableViewFetchedResultsDisplayer
         vc.chat = chat
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    private func createHeader() -> UIView {
+        let header = UIView()
+        let newGroupButton = UIButton()
+        newGroupButton.translatesAutoresizingMaskIntoConstraints = false
+        header.addSubview(newGroupButton)
+        
+        newGroupButton.setTitle("New Group", for: .normal)
+        newGroupButton.setTitleColor(view.tintColor, for: .normal)
+        newGroupButton.addTarget(self, action: #selector(self.pressedNewGroup), for: .touchUpInside)
+        
+        let border = UIView()
+        border.translatesAutoresizingMaskIntoConstraints = false
+        header.addSubview(border)
+        border.backgroundColor = UIColor.lightGray
+        
+        let constraints: [NSLayoutConstraint] = [
+            
+            newGroupButton.heightAnchor.constraint(equalTo: header.heightAnchor),
+            newGroupButton.trailingAnchor.constraint(equalTo: header.layoutMarginsGuide.trailingAnchor),
+            border.heightAnchor.constraint(equalToConstant: 1),
+            border.leadingAnchor.constraint(equalTo: header.leadingAnchor),
+            border.trailingAnchor.constraint(equalTo: header.trailingAnchor),
+            border.bottomAnchor.constraint(equalTo: header.bottomAnchor)
+            
+        ]
+        NSLayoutConstraint.activate(constraints)
+        
+        //Give header view a layout, calc header, add header to tableView
+        header.setNeedsLayout()
+        header.layoutIfNeeded()
+        let height = header.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+        var frame = header.frame
+        frame.size.height = height
+        header.frame = frame
+        
+        return header
+    }
+    
+    func pressedNewGroup() {
+        let vc = NewGroupViewController()
+        let chatContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        chatContext.parent = context
+        vc.context = chatContext
+        vc.chatCreationDelegate = self
+        let navVC = UINavigationController(rootViewController: vc)
+        present(navVC, animated: true, completion: nil)
+    }
 }
 
 extension AllChatsViewController: UITableViewDataSource {
@@ -135,6 +184,11 @@ extension AllChatsViewController: UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let chat = fetchedResultsController?.object(at: indexPath)
+        let vc = ChatViewController()
+        vc.context = context
+        vc.chat = chat
+        navigationController?.pushViewController(vc, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

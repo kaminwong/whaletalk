@@ -28,17 +28,18 @@
 		D3F106B61EA8DCBE00ED416A /* ChatCreationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F106B51EA8DCBE00ED416A /* ChatCreationDelegate.swift */; };
 		D3F106B91EA9EB6300ED416A /* Message+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F106B71EA9EB6300ED416A /* Message+CoreDataClass.swift */; };
 		D3F106BA1EA9EB6300ED416A /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F106B81EA9EB6300ED416A /* Message+CoreDataProperties.swift */; };
+		D3F106C41EAB37D800ED416A /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F106C31EAB37D800ED416A /* NewGroupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D36233BC1E928D92000D0742 /* Chat+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Chat+CoreDataClass.swift"; path = "../Chat+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D36233BC1E928D92000D0742 /* Chat+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Chat+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D36233C01E928E27000D0742 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		D36233C21E929288000D0742 /* AllChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllChatsViewController.swift; sourceTree = "<group>"; };
 		D3A37B3F1E9C070100B8D8BA /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		D3A919A01EA8B897009A9A64 /* NewChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewChatViewController.swift; sourceTree = "<group>"; };
 		D3A919A21EA8B89F009A9A64 /* TableViewFetchedResultsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewFetchedResultsDelegate.swift; sourceTree = "<group>"; };
 		D3A919A31EA8B89F009A9A64 /* UIViewController+FillWithView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+FillWithView.swift"; sourceTree = "<group>"; };
-		D3A919A61EA8B908009A9A64 /* Contact+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Contact+CoreDataClass.swift"; path = "../Contact+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D3A919A61EA8B908009A9A64 /* Contact+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D3C57D311E84C61000E61EDC /* WhaleTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhaleTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3C57D341E84C61000E61EDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3C57D391E84C61000E61EDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -54,6 +55,7 @@
 		D3F106B51EA8DCBE00ED416A /* ChatCreationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCreationDelegate.swift; sourceTree = "<group>"; };
 		D3F106B71EA9EB6300ED416A /* Message+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D3F106B81EA9EB6300ED416A /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D3F106C31EAB37D800ED416A /* NewGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,8 @@
 				D3F106B81EA9EB6300ED416A /* Message+CoreDataProperties.swift */,
 				D3F106B11EA8C36000ED416A /* Chat+CoreDataProperties.swift */,
 				D3F106B21EA8C36000ED416A /* Contact+CoreDataProperties.swift */,
+				D3A919A61EA8B908009A9A64 /* Contact+CoreDataClass.swift */,
+				D36233BC1E928D92000D0742 /* Chat+CoreDataClass.swift */,
 				D3C57D331E84C61000E61EDC /* WhaleTalk */,
 				D3C57D321E84C61000E61EDC /* Products */,
 			);
@@ -90,26 +94,89 @@
 		D3C57D331E84C61000E61EDC /* WhaleTalk */ = {
 			isa = PBXGroup;
 			children = (
-				D3A919A61EA8B908009A9A64 /* Contact+CoreDataClass.swift */,
-				D36233BC1E928D92000D0742 /* Chat+CoreDataClass.swift */,
 				D3C57D341E84C61000E61EDC /* AppDelegate.swift */,
-				D3A37B3F1E9C070100B8D8BA /* CoreDataStack.swift */,
-				D3C57D491E84C63700E61EDC /* ChatViewController.swift */,
+				D3F106BB1EAA77A800ED416A /* ContactsVC */,
+				D3F106BC1EAA77B500ED416A /* AllChatsVC */,
+				D3F106BD1EAA77C100ED416A /* NewChatVC */,
+				D3F106C21EAA785400ED416A /* ChatVC */,
+				D3F106BE1EAA77CA00ED416A /* Protocols */,
+				D3F106BF1EAA77D200ED416A /* Helpers */,
+				D3F106C01EAA77D900ED416A /* Frameworks */,
+				D3F106C11EAA77E000ED416A /* Supporting Files */,
+			);
+			path = WhaleTalk;
+			sourceTree = "<group>";
+		};
+		D3F106BB1EAA77A800ED416A /* ContactsVC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ContactsVC;
+			sourceTree = "<group>";
+		};
+		D3F106BC1EAA77B500ED416A /* AllChatsVC */ = {
+			isa = PBXGroup;
+			children = (
 				D36233C21E929288000D0742 /* AllChatsViewController.swift */,
-				D3A919A01EA8B897009A9A64 /* NewChatViewController.swift */,
-				D3C57D4B1E84C64800E61EDC /* MessageCell.swift */,
+				D3F106C31EAB37D800ED416A /* NewGroupViewController.swift */,
 				D36233C01E928E27000D0742 /* ChatCell.swift */,
-				D3C57D4D1E84C65200E61EDC /* UITableView+Scroll.swift */,
+			);
+			name = AllChatsVC;
+			sourceTree = "<group>";
+		};
+		D3F106BD1EAA77C100ED416A /* NewChatVC */ = {
+			isa = PBXGroup;
+			children = (
+				D3A919A01EA8B897009A9A64 /* NewChatViewController.swift */,
+			);
+			name = NewChatVC;
+			sourceTree = "<group>";
+		};
+		D3F106BE1EAA77CA00ED416A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
 				D3A919A21EA8B89F009A9A64 /* TableViewFetchedResultsDelegate.swift */,
-				D3A919A31EA8B89F009A9A64 /* UIViewController+FillWithView.swift */,
 				D3F106B51EA8DCBE00ED416A /* ChatCreationDelegate.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		D3F106BF1EAA77D200ED416A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D3C57D4D1E84C65200E61EDC /* UITableView+Scroll.swift */,
+				D3A919A31EA8B89F009A9A64 /* UIViewController+FillWithView.swift */,
+				D3A37B3F1E9C070100B8D8BA /* CoreDataStack.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		D3F106C01EAA77D900ED416A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D3F106C11EAA77E000ED416A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				D3C57D381E84C61000E61EDC /* Main.storyboard */,
 				D3C57D3E1E84C61100E61EDC /* Assets.xcassets */,
 				D3C57D401E84C61100E61EDC /* LaunchScreen.storyboard */,
 				D3C57D431E84C61100E61EDC /* Info.plist */,
 				D3C57D3B1E84C61000E61EDC /* WhaleTalk.xcdatamodeld */,
 			);
-			path = WhaleTalk;
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D3F106C21EAA785400ED416A /* ChatVC */ = {
+			isa = PBXGroup;
+			children = (
+				D3C57D491E84C63700E61EDC /* ChatViewController.swift */,
+				D3C57D4B1E84C64800E61EDC /* MessageCell.swift */,
+			);
+			name = ChatVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +264,7 @@
 				D3A37B401E9C070100B8D8BA /* CoreDataStack.swift in Sources */,
 				D3A919A11EA8B897009A9A64 /* NewChatViewController.swift in Sources */,
 				D3C57D4E1E84C65200E61EDC /* UITableView+Scroll.swift in Sources */,
+				D3F106C41EAB37D800ED416A /* NewGroupViewController.swift in Sources */,
 				D3A919A51EA8B89F009A9A64 /* UIViewController+FillWithView.swift in Sources */,
 				D3F106BA1EA9EB6300ED416A /* Message+CoreDataProperties.swift in Sources */,
 				D3C57D3D1E84C61100E61EDC /* WhaleTalk.xcdatamodeld in Sources */,
