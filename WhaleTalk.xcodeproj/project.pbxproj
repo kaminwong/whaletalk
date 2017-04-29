@@ -10,6 +10,7 @@
 		30CABA5C1EB267C6001A7104 /* NewGroupParticipantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CABA5B1EB267C6001A7104 /* NewGroupParticipantsViewController.swift */; };
 		30CABA5E1EB47870001A7104 /* ContactImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CABA5D1EB47870001A7104 /* ContactImporter.swift */; };
 		30CABA601EB485D4001A7104 /* CDHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CABA5F1EB485D4001A7104 /* CDHelper.swift */; };
+		30CABA621EB504A2001A7104 /* WhaleTalk in Resources */ = {isa = PBXBuildFile; fileRef = 30CABA611EB504A2001A7104 /* WhaleTalk */; };
 		D36233BE1E928D92000D0742 /* Chat+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36233BC1E928D92000D0742 /* Chat+CoreDataClass.swift */; };
 		D36233C11E928E27000D0742 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36233C01E928E27000D0742 /* ChatCell.swift */; };
 		D36233C31E929288000D0742 /* AllChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36233C21E929288000D0742 /* AllChatsViewController.swift */; };
@@ -38,6 +39,7 @@
 		30CABA5B1EB267C6001A7104 /* NewGroupParticipantsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroupParticipantsViewController.swift; sourceTree = "<group>"; };
 		30CABA5D1EB47870001A7104 /* ContactImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactImporter.swift; path = ../ContactImporter.swift; sourceTree = "<group>"; };
 		30CABA5F1EB485D4001A7104 /* CDHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDHelper.swift; path = ../../../Downloads/CDHelper.swift; sourceTree = "<group>"; };
+		30CABA611EB504A2001A7104 /* WhaleTalk */ = {isa = PBXFileReference; lastKnownFileType = folder; name = WhaleTalk; sourceTree = "<group>"; };
 		D36233BC1E928D92000D0742 /* Chat+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Chat+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D36233C01E928E27000D0742 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		D36233C21E929288000D0742 /* AllChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllChatsViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				D3A919A31EA8B89F009A9A64 /* UIViewController+FillWithView.swift */,
 				D3A37B3F1E9C070100B8D8BA /* CoreDataStack.swift */,
 				30CABA5F1EB485D4001A7104 /* CDHelper.swift */,
+				30CABA611EB504A2001A7104 /* WhaleTalk */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 			files = (
 				D3C57D421E84C61100E61EDC /* LaunchScreen.storyboard in Resources */,
 				D3C57D3F1E84C61100E61EDC /* Assets.xcassets in Resources */,
+				30CABA621EB504A2001A7104 /* WhaleTalk in Resources */,
 				D3C57D3A1E84C61000E61EDC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
