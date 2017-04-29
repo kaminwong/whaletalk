@@ -12,6 +12,10 @@ import CoreData
 //@objc(Chat)
 public class Chat: NSManagedObject {
     
+    var isGroupChat: Bool {
+        return (participants?.count)! > 1
+    }
+    
     var lastMessage: Message? {
         let request = NSFetchRequest<Message>(entityName: "Message")
         request.predicate  = NSPredicate(format: "chat = %@", self)

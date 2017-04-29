@@ -2,7 +2,7 @@
 //  Chat+CoreDataProperties.swift
 //  WhaleTalk
 //
-//  Created by WONGKAI MING on 20/4/17.
+//  Created by KAI MING WONG on 2017/4/28.
 //  Copyright © 2017年 WONGKAI MING. All rights reserved.
 //
 
@@ -17,6 +17,7 @@ extension Chat {
     }
 
     @NSManaged public var lastMessageTime: NSDate?
+    @NSManaged public var name: String?
     @NSManaged public var messages: NSSet?
     @NSManaged public var participants: NSSet?
 

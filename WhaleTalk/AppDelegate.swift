@@ -24,7 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav = UINavigationController(rootViewController: vc)
         window!.rootViewController = nav
         vc.context = coreDataStack.managedContext
-        fakeData(context: coreDataStack.managedContext)
+        let contactsContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+            contactsContext.persistentStoreCoordinator = CDHelper.sharedInstance.coordinator
+            importContacts(context: contactsContext)
         
         
         return true
@@ -55,21 +57,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         coreDataStack.saveContext()
     }
     
-    func fakeData(context: NSManagedObjectContext) {
+    func importContacts(context: NSManagedObjectContext) {
         let dataSeeded = UserDefaults.standard.bool(forKey: "dataSeeded")
         guard !dataSeeded else {return}
         
-        let people = [("John", "Nichols"), ("Matt", "Parker")]
-        for person in people {
-            let contact = NSEntityDescription.insertNewObject(forEntityName: "Contact", into: context) as! Contact
-            contact.firstName = person.0
-            contact.lastName = person.1
-        }
-        do {
-            try context.save()
-        } catch {
-            print("Error Saving")
-        }
+        let contactImporter = ContactImporter(context: context)
+        contactImporter.fetch()
+        
         UserDefaults.standard.object(forKey: "dataSeeded")
     }
     
