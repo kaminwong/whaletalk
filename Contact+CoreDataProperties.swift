@@ -2,7 +2,7 @@
 //  Contact+CoreDataProperties.swift
 //  WhaleTalk
 //
-//  Created by KAI MING WONG on 2017/4/29.
+//  Created by WONGKAI MING on 3/5/17.
 //  Copyright © 2017年 WONGKAI MING. All rights reserved.
 //
 
@@ -13,14 +13,15 @@ import CoreData
 extension Contact {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Contact> {
-        return NSFetchRequest<Contact>(entityName: "Contact")
+        return NSFetchRequest<Contact>(entityName: "Contact");
     }
 
+    @NSManaged public var contactid: String?
     @NSManaged public var firstName: String?
     @NSManaged public var lastName: String?
-    @NSManaged public var contactid: String?
     @NSManaged public var chats: NSSet?
     @NSManaged public var messages: NSSet?
+    @NSManaged public var phoneNumbers: NSSet?
 
 }
 
@@ -55,5 +56,22 @@ extension Contact {
 
     @objc(removeMessages:)
     @NSManaged public func removeFromMessages(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for phoneNumbers
+extension Contact {
+
+    @objc(addPhoneNumbersObject:)
+    @NSManaged public func addToPhoneNumbers(_ value: PhoneNumber)
+
+    @objc(removePhoneNumbersObject:)
+    @NSManaged public func removeFromPhoneNumbers(_ value: PhoneNumber)
+
+    @objc(addPhoneNumbers:)
+    @NSManaged public func addToPhoneNumbers(_ values: NSSet)
+
+    @objc(removePhoneNumbers:)
+    @NSManaged public func removeFromPhoneNumbers(_ values: NSSet)
 
 }

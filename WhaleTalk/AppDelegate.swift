@@ -25,7 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.rootViewController = nav
         vc.context = coreDataStack.managedContext
         let contactsContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-            contactsContext.persistentStoreCoordinator = CDHelper.sharedInstance.coordinator
+            contactsContext.persistentStoreCoordinator = coreDataStack.managedContext.persistentStoreCoordinator
+        //contactsContext.persistentStoreCoordinator = CDHelper.sharedInstance.coordinator
             importContacts(context: contactsContext)
         
         
