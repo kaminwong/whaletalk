@@ -19,21 +19,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var coreDataStack = CoreDataStack(modelName: "WhaleTalk")
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        let context = coreDataStack.managedContext
-        //let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        let vc = AllChatsViewController()
-        let nav = UINavigationController(rootViewController: vc)
-        window!.rootViewController = nav
-        vc.context = context
+        
+        let mainContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        mainContext.persistentStoreCoordinator = coreDataStack.managedContext.persistentStoreCoordinator
+        
+//        // Override point for customization after application launch.
+//        let context = coreDataStack.managedContext
+//        //let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+//        let vc = AllChatsViewController()
+//        let nav = UINavigationController(rootViewController: vc)
+//        window!.rootViewController = nav
+//        vc.context = context
         let contactsContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
             contactsContext.persistentStoreCoordinator = coreDataStack.managedContext.persistentStoreCoordinator
         //contactsContext.persistentStoreCoordinator = CDHelper.sharedInstance.coordinator
-        contactImporter = ContactImporter(context: context)
+        contactImporter = ContactImporter(context: mainContext)
         importContacts(context: contactsContext)
 //45        contactImporter?.listenForChanges()
         contactImporter?.fetch()
         
+        let tabController = UITabBarController()
+        let vcData:[(UIViewController, UIImage)] = [
+            (AllChatsViewController(), UIImage(named: "chat_icon")!)
+        ]
+        let vcs = vcData.map{
+            (vc: UIViewController, image: UIImage)-> UINavigationController in
+            if var vc = vc as? ContextViewController {
+                vc.context = mainContext
+            }
+            let nav = UINavigationController(rootViewController: vc)
+            nav.tabBarItem.image = image
+            return nav
+        }
+        tabController.viewControllers = vcs
+        window?.rootViewController = tabController
         
         return true
     }

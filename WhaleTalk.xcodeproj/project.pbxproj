@@ -15,6 +15,8 @@
 		D36233BE1E928D92000D0742 /* Chat+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36233BC1E928D92000D0742 /* Chat+CoreDataClass.swift */; };
 		D36233C11E928E27000D0742 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36233C01E928E27000D0742 /* ChatCell.swift */; };
 		D36233C31E929288000D0742 /* AllChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36233C21E929288000D0742 /* AllChatsViewController.swift */; };
+		D387C74C1EBA472300507468 /* ContextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387C74B1EBA472300507468 /* ContextViewController.swift */; };
+		D387C74E1EBA483000507468 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D387C74D1EBA483000507468 /* Assets.xcassets */; };
 		D3A37B401E9C070100B8D8BA /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A37B3F1E9C070100B8D8BA /* CoreDataStack.swift */; };
 		D3A919A11EA8B897009A9A64 /* NewChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A919A01EA8B897009A9A64 /* NewChatViewController.swift */; };
 		D3A919A41EA8B89F009A9A64 /* TableViewFetchedResultsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A919A21EA8B89F009A9A64 /* TableViewFetchedResultsDelegate.swift */; };
@@ -23,7 +25,6 @@
 		D3C57D351E84C61000E61EDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C57D341E84C61000E61EDC /* AppDelegate.swift */; };
 		D3C57D3A1E84C61000E61EDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3C57D381E84C61000E61EDC /* Main.storyboard */; };
 		D3C57D3D1E84C61100E61EDC /* WhaleTalk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3C57D3B1E84C61000E61EDC /* WhaleTalk.xcdatamodeld */; };
-		D3C57D3F1E84C61100E61EDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3C57D3E1E84C61100E61EDC /* Assets.xcassets */; };
 		D3C57D421E84C61100E61EDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3C57D401E84C61100E61EDC /* LaunchScreen.storyboard */; };
 		D3C57D4A1E84C63700E61EDC /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C57D491E84C63700E61EDC /* ChatViewController.swift */; };
 		D3C57D4C1E84C64800E61EDC /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C57D4B1E84C64800E61EDC /* MessageCell.swift */; };
@@ -45,6 +46,8 @@
 		D36233BC1E928D92000D0742 /* Chat+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Chat+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D36233C01E928E27000D0742 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		D36233C21E929288000D0742 /* AllChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllChatsViewController.swift; sourceTree = "<group>"; };
+		D387C74B1EBA472300507468 /* ContextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextViewController.swift; sourceTree = "<group>"; };
+		D387C74D1EBA483000507468 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3A37B3F1E9C070100B8D8BA /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		D3A919A01EA8B897009A9A64 /* NewChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewChatViewController.swift; sourceTree = "<group>"; };
 		D3A919A21EA8B89F009A9A64 /* TableViewFetchedResultsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewFetchedResultsDelegate.swift; sourceTree = "<group>"; };
@@ -54,7 +57,6 @@
 		D3C57D341E84C61000E61EDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3C57D391E84C61000E61EDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D3C57D3C1E84C61100E61EDC /* WhaleTalk.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WhaleTalk.xcdatamodel; sourceTree = "<group>"; };
-		D3C57D3E1E84C61100E61EDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3C57D411E84C61100E61EDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3C57D431E84C61100E61EDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3C57D491E84C63700E61EDC /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +81,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D387C7491EBA46A900507468 /* NewGroupVC */ = {
+			isa = PBXGroup;
+			children = (
+				D3F106C31EAB37D800ED416A /* NewGroupViewController.swift */,
+			);
+			name = NewGroupVC;
+			sourceTree = "<group>";
+		};
+		D387C74A1EBA46B800507468 /* NewGroupParticipantsVC */ = {
+			isa = PBXGroup;
+			children = (
+				30CABA5B1EB267C6001A7104 /* NewGroupParticipantsViewController.swift */,
+			);
+			name = NewGroupParticipantsVC;
+			sourceTree = "<group>";
+		};
 		D3C57D281E84C61000E61EDC = {
 			isa = PBXGroup;
 			children = (
@@ -107,9 +125,9 @@
 			isa = PBXGroup;
 			children = (
 				D3C57D341E84C61000E61EDC /* AppDelegate.swift */,
-				D3F106C31EAB37D800ED416A /* NewGroupViewController.swift */,
-				30CABA5B1EB267C6001A7104 /* NewGroupParticipantsViewController.swift */,
-				30CABA5D1EB47870001A7104 /* ContactImporter.swift */,
+				D387C74B1EBA472300507468 /* ContextViewController.swift */,
+				D387C7491EBA46A900507468 /* NewGroupVC */,
+				D387C74A1EBA46B800507468 /* NewGroupParticipantsVC */,
 				D3F106BB1EAA77A800ED416A /* ContactsVC */,
 				D3F106BC1EAA77B500ED416A /* AllChatsVC */,
 				D3F106BD1EAA77C100ED416A /* NewChatVC */,
@@ -158,6 +176,7 @@
 		D3F106BF1EAA77D200ED416A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				30CABA5D1EB47870001A7104 /* ContactImporter.swift */,
 				D3C57D4D1E84C65200E61EDC /* UITableView+Scroll.swift */,
 				D3A919A31EA8B89F009A9A64 /* UIViewController+FillWithView.swift */,
 				D3A37B3F1E9C070100B8D8BA /* CoreDataStack.swift */,
@@ -176,8 +195,8 @@
 		D3F106C11EAA77E000ED416A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D387C74D1EBA483000507468 /* Assets.xcassets */,
 				D3C57D381E84C61000E61EDC /* Main.storyboard */,
-				D3C57D3E1E84C61100E61EDC /* Assets.xcassets */,
 				D3C57D401E84C61100E61EDC /* LaunchScreen.storyboard */,
 				D3C57D431E84C61100E61EDC /* Info.plist */,
 				D3C57D3B1E84C61000E61EDC /* WhaleTalk.xcdatamodeld */,
@@ -254,7 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3C57D421E84C61100E61EDC /* LaunchScreen.storyboard in Resources */,
-				D3C57D3F1E84C61100E61EDC /* Assets.xcassets in Resources */,
+				D387C74E1EBA483000507468 /* Assets.xcassets in Resources */,
 				D3C57D3A1E84C61000E61EDC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +295,7 @@
 				D3A919A81EA8B908009A9A64 /* Contact+CoreDataClass.swift in Sources */,
 				D3F106B41EA8C36000ED416A /* Contact+CoreDataProperties.swift in Sources */,
 				30CABA5C1EB267C6001A7104 /* NewGroupParticipantsViewController.swift in Sources */,
+				D387C74C1EBA472300507468 /* ContextViewController.swift in Sources */,
 				D36233C11E928E27000D0742 /* ChatCell.swift in Sources */,
 				D3A919A41EA8B89F009A9A64 /* TableViewFetchedResultsDelegate.swift in Sources */,
 				D3C57D4C1E84C64800E61EDC /* MessageCell.swift in Sources */,
