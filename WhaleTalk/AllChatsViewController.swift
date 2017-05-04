@@ -101,7 +101,9 @@ class AllChatsViewController: UIViewController, TableViewFetchedResultsDisplayer
         let vc = ChatViewController()
         vc.context = context
         vc.chat = chat
+        vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     private func createHeader() -> UIView {
@@ -187,6 +189,7 @@ extension AllChatsViewController: UITableViewDelegate {
         let vc = ChatViewController()
         vc.context = context
         vc.chat = chat
+        vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }

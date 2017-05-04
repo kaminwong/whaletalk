@@ -12,6 +12,9 @@
 		30CABA641EB50723001A7104 /* CDHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CABA631EB50723001A7104 /* CDHelper.swift */; };
 		D3062DA31EB9B55D0000C572 /* PhoneNumber+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3062DA11EB9B55D0000C572 /* PhoneNumber+CoreDataClass.swift */; };
 		D3062DA41EB9B55D0000C572 /* PhoneNumber+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3062DA21EB9B55D0000C572 /* PhoneNumber+CoreDataProperties.swift */; };
+		D3062DA61EBAC7170000C572 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3062DA51EBAC7170000C572 /* ContactsViewController.swift */; };
+		D3062DA81EBACD3B0000C572 /* TableViewFetchedResultsDisplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3062DA71EBACD3B0000C572 /* TableViewFetchedResultsDisplayer.swift */; };
+		D3062DAA1EBAD5940000C572 /* ContactsSearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3062DA91EBAD5940000C572 /* ContactsSearchResultsController.swift */; };
 		D36233BE1E928D92000D0742 /* Chat+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36233BC1E928D92000D0742 /* Chat+CoreDataClass.swift */; };
 		D36233C11E928E27000D0742 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36233C01E928E27000D0742 /* ChatCell.swift */; };
 		D36233C31E929288000D0742 /* AllChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36233C21E929288000D0742 /* AllChatsViewController.swift */; };
@@ -43,6 +46,9 @@
 		30CABA631EB50723001A7104 /* CDHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDHelper.swift; sourceTree = "<group>"; };
 		D3062DA11EB9B55D0000C572 /* PhoneNumber+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhoneNumber+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D3062DA21EB9B55D0000C572 /* PhoneNumber+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhoneNumber+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D3062DA51EBAC7170000C572 /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		D3062DA71EBACD3B0000C572 /* TableViewFetchedResultsDisplayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewFetchedResultsDisplayer.swift; sourceTree = "<group>"; };
+		D3062DA91EBAD5940000C572 /* ContactsSearchResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsSearchResultsController.swift; sourceTree = "<group>"; };
 		D36233BC1E928D92000D0742 /* Chat+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Chat+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D36233C01E928E27000D0742 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		D36233C21E929288000D0742 /* AllChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllChatsViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +149,8 @@
 		D3F106BB1EAA77A800ED416A /* ContactsVC */ = {
 			isa = PBXGroup;
 			children = (
+				D3062DA51EBAC7170000C572 /* ContactsViewController.swift */,
+				D3062DA91EBAD5940000C572 /* ContactsSearchResultsController.swift */,
 			);
 			name = ContactsVC;
 			sourceTree = "<group>";
@@ -168,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				D3A919A21EA8B89F009A9A64 /* TableViewFetchedResultsDelegate.swift */,
+				D3062DA71EBACD3B0000C572 /* TableViewFetchedResultsDisplayer.swift */,
 				D3F106B51EA8DCBE00ED416A /* ChatCreationDelegate.swift */,
 			);
 			name = Protocols;
@@ -286,7 +295,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3F106B61EA8DCBE00ED416A /* ChatCreationDelegate.swift in Sources */,
+				D3062DA61EBAC7170000C572 /* ContactsViewController.swift in Sources */,
 				30CABA5E1EB47870001A7104 /* ContactImporter.swift in Sources */,
+				D3062DAA1EBAD5940000C572 /* ContactsSearchResultsController.swift in Sources */,
 				D36233C31E929288000D0742 /* AllChatsViewController.swift in Sources */,
 				D3C57D351E84C61000E61EDC /* AppDelegate.swift in Sources */,
 				D3C57D4A1E84C63700E61EDC /* ChatViewController.swift in Sources */,
@@ -300,6 +311,7 @@
 				D3A919A41EA8B89F009A9A64 /* TableViewFetchedResultsDelegate.swift in Sources */,
 				D3C57D4C1E84C64800E61EDC /* MessageCell.swift in Sources */,
 				D3A37B401E9C070100B8D8BA /* CoreDataStack.swift in Sources */,
+				D3062DA81EBACD3B0000C572 /* TableViewFetchedResultsDisplayer.swift in Sources */,
 				D3A919A11EA8B897009A9A64 /* NewChatViewController.swift in Sources */,
 				D3C57D4E1E84C65200E61EDC /* UITableView+Scroll.swift in Sources */,
 				D3F106C41EAB37D800ED416A /* NewGroupViewController.swift in Sources */,
