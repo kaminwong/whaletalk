@@ -56,7 +56,7 @@ class ContactsViewController: UIViewController, ContextViewController, TableView
         searchController?.searchResultsUpdater = resultsVC
         definesPresentationContext = true
         tableView.tableHeaderView = searchController?.searchBar
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view. 
     }
     
     
