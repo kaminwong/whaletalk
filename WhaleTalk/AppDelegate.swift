@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     fileprivate var contactImporter: ContactImporter?
+    fileprivate var contactsSyncer: Syncer?
     
     lazy var coreDataStack = CoreDataStack(modelName: "WhaleTalk")
     
@@ -31,18 +32,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        window!.rootViewController = nav
 //        vc.context = context
         let contactsContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-            contactsContext.persistentStoreCoordinator = coreDataStack.managedContext.persistentStoreCoordinator
-        //contactsContext.persistentStoreCoordinator = CDHelper.sharedInstance.coordinator
+        contactsContext.persistentStoreCoordinator = coreDataStack.managedContext.persistentStoreCoordinator
+        contactsSyncer = Syncer(mainContext: mainContext, backgroundContext: contactsContext)
         contactImporter = ContactImporter(context: mainContext)
         importContacts(context: contactsContext)
-//45        contactImporter?.listenForChanges()
-        contactImporter?.fetch()
+        //45
+        contactImporter?.listenForChanges()
         
         // Tab Bar Controller
         let tabController = UITabBarController()
         let vcData:[(UIViewController, UIImage, String)] = [
             (ContactsViewController(), UIImage(named: "contact_icon")!, "Contacts"),
-            (AllChatsViewController(), UIImage(named: "chat_icon")!, "Chats")
+            (AllChatsViewController(), UIImage(named: "chat_icon")!, "Chats"),
+            (FavoritesViewController(), UIImage(named: "favorites_icon")!, "Favorites")
             
         
         ]

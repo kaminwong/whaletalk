@@ -2,7 +2,7 @@
 //  Contact+CoreDataProperties.swift
 //  WhaleTalk
 //
-//  Created by WONGKAI MING on 3/5/17.
+//  Created by WONGKAI MING on 5/5/17.
 //  Copyright © 2017年 WONGKAI MING. All rights reserved.
 //
 
@@ -19,6 +19,8 @@ extension Contact {
     @NSManaged public var contactid: String?
     @NSManaged public var firstName: String?
     @NSManaged public var lastName: String?
+    @NSManaged public var favorite: Bool
+    @NSManaged public var status: String?
     @NSManaged public var chats: NSSet?
     @NSManaged public var messages: NSSet?
     @NSManaged public var phoneNumbers: NSSet?

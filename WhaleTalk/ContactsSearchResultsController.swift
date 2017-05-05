@@ -13,6 +13,8 @@ class ContactsSearchResultsController: UITableViewController {
 
     fileprivate var filteredContacts = [Contact]()
     
+    var contactSelector: ContactSelector?
+    
     var contacts = [Contact](){
         didSet {
             filteredContacts = contacts
@@ -57,6 +59,7 @@ class ContactsSearchResultsController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let contact = filteredContacts[indexPath.row]
+        contactSelector?.selectedContact(contact: contact)
     }
     
 

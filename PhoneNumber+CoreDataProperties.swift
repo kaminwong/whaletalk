@@ -2,7 +2,7 @@
 //  PhoneNumber+CoreDataProperties.swift
 //  WhaleTalk
 //
-//  Created by WONGKAI MING on 3/5/17.
+//  Created by WONGKAI MING on 5/5/17.
 //  Copyright © 2017年 WONGKAI MING. All rights reserved.
 //
 
@@ -17,6 +17,8 @@ extension PhoneNumber {
     }
 
     @NSManaged public var value: String?
+    @NSManaged public var kind: String?
+    @NSManaged public var registered: Bool
     @NSManaged public var contact: Contact?
 
 }

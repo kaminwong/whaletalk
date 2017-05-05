@@ -11,7 +11,7 @@ import CoreData
 import Contacts
 import ContactsUI
 
-class ContactsViewController: UIViewController, ContextViewController, TableViewFetchedResultsDisplayer {
+class ContactsViewController: UIViewController, ContextViewController, TableViewFetchedResultsDisplayer, ContactSelector {
     
     var context: NSManagedObjectContext?
     fileprivate var fetchedResultsController: NSFetchedResultsController<Contact>!
@@ -31,6 +31,7 @@ class ContactsViewController: UIViewController, ContextViewController, TableView
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.dataSource = self
+        tableView.delegate = self
         
         fillViewWith(subview: tableView)
         
@@ -52,11 +53,12 @@ class ContactsViewController: UIViewController, ContextViewController, TableView
         let resultsVC = ContactsSearchResultsController()
         guard let fetchedContact = fetchedResultsController.fetchedObjects else {return}
         resultsVC.contacts = fetchedContact
+        resultsVC.contactSelector = self
         searchController = UISearchController(searchResultsController: resultsVC)
         searchController?.searchResultsUpdater = resultsVC
         definesPresentationContext = true
         tableView.tableHeaderView = searchController?.searchBar
-        // Do any additional setup after loading the view. 
+        // Do any additional setup after loading the view.
     }
     
     
@@ -67,7 +69,9 @@ class ContactsViewController: UIViewController, ContextViewController, TableView
     }
     
     func newContact() {
-        
+        let vc = CNContactViewController(forNewContact: nil)
+        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     func configureCell(cell: UITableViewCell, for indexPath: IndexPath) {
@@ -76,6 +80,21 @@ class ContactsViewController: UIViewController, ContextViewController, TableView
         cell.textLabel?.text = contact.fullName
 
         
+    }
+    
+    func selectedContact(contact: Contact) {
+        guard let id = contact.contactid else {return}
+        let store = CNContactStore()
+        let cncontact: CNContact
+        do {
+            cncontact = try store.unifiedContact(withIdentifier: id, keysToFetch: [CNContactViewController.descriptorForRequiredKeys()])
+        } catch {
+            return
+        }
+        let vc = CNContactViewController(for: cncontact)
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+        searchController?.isActive = false
     }
 
 }
@@ -102,6 +121,26 @@ extension ContactsViewController: UITableViewDataSource {
         guard let sections = fetchedResultsController?.sections else {return nil}
         let currentSection = sections[section]
         return currentSection.name
+    }
+}
+
+extension ContactsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let contact = fetchedResultsController.object(at: indexPath)
+        selectedContact(contact: contact)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension ContactsViewController: CNContactViewControllerDelegate {
+    func contactViewController(_ viewController: CNContactViewController, didCompleteWith contact: CNContact?) {
+        if contact == nil {
+            navigationController?.popViewController(animated: true)
+            return
+        }
     }
 }
 

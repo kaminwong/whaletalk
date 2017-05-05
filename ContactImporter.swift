@@ -19,18 +19,18 @@ class ContactImporter: NSObject {
         self.context = context
     }
     
-//    func listenForChanges() {
-//        
-//        CNContactStore.authorizationStatus(for: .contacts)
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.addressBookDidChange), name: NSNotification.Name.CNContactStoreDidChange, object: nil)
-//    }
+    func listenForChanges() {
+        
+        CNContactStore.authorizationStatus(for: .contacts)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.addressBookDidChange), name: NSNotification.Name.CNContactStoreDidChange, object: nil)
+    }
     
-//    func addressBookDidChange(notification: NSNotification) {
-//        print(notification)
-//        let now = Date()
-//        guard lastCNNotificationTime == nil || now.timeIntervalSince(lastCNNotificationTime!) > 1 else {return}
-//        lastCNNotificationTime = now
-//    }
+    func addressBookDidChange(notification: NSNotification) {
+        print(notification)
+        let now = Date()
+        guard lastCNNotificationTime == nil || now.timeIntervalSince(lastCNNotificationTime!) > 1 else {return}
+        lastCNNotificationTime = now
+    }
 
     func formatPhoneNumber(number: CNPhoneNumber) -> String {
         return number.stringValue
@@ -90,10 +90,14 @@ class ContactImporter: NSObject {
                 for cnVal in cnContact.phoneNumbers{
                 let cnPhoneNumber = cnVal.value
                 guard let phoneNumber = phoneNumbers[cnPhoneNumber.stringValue] ?? NSEntityDescription.insertNewObject(forEntityName: "PhoneNumber", into: self.context) as? PhoneNumber else {continue}
+                phoneNumber.kind = CNLabeledValue<NSString>.localizedString(forLabel: cnVal.label ?? "")
                 phoneNumber.value = self.formatPhoneNumber(number: cnPhoneNumber)
                 phoneNumber.contact = contact
                 }
                 
+                    if contact.isInserted{
+                        contact.favorite = true
+                    }
                 
                 })
                 try self.context.save()
