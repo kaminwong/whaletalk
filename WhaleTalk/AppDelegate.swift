@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     fileprivate var contactImporter: ContactImporter?
     fileprivate var contactsSyncer: Syncer?
+    fileprivate var contactsUploadSyncer: Syncer?
+    fileprivate var firebaseSyncer: Syncer?
     
     lazy var coreDataStack = CoreDataStack(modelName: "WhaleTalk")
     
@@ -33,9 +35,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        vc.context = context
         let contactsContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         contactsContext.persistentStoreCoordinator = coreDataStack.managedContext.persistentStoreCoordinator
+        let firebaseContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        firebaseContext.persistentStoreCoordinator = coreDataStack.managedContext.persistentStoreCoordinator
+        
+        //73
         contactsSyncer = Syncer(mainContext: mainContext, backgroundContext: contactsContext)
+        contactsUploadSyncer = Syncer(mainContext: mainContext, backgroundContext: contactsContext)
+        firebaseSyncer = Syncer(mainContext: mainContext, backgroundContext: firebaseContext)
         contactImporter = ContactImporter(context: mainContext)
         importContacts(context: contactsContext)
+        
         //45
         contactImporter?.listenForChanges()
         
@@ -59,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return nav
         }
         tabController.viewControllers = vcs
-        window?.rootViewController = tabController
+        window?.rootViewController = SignUpViewController()
         
         return true
     }
