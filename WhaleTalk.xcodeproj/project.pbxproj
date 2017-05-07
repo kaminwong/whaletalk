@@ -23,6 +23,13 @@
 		D36233BE1E928D92000D0742 /* Chat+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36233BC1E928D92000D0742 /* Chat+CoreDataClass.swift */; };
 		D36233C11E928E27000D0742 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36233C01E928E27000D0742 /* ChatCell.swift */; };
 		D36233C31E929288000D0742 /* AllChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36233C21E929288000D0742 /* AllChatsViewController.swift */; };
+		D36258971EBDA0250010BF01 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D36258961EBDA0250010BF01 /* libicucore.tbd */; };
+		D36258991EBDA0370010BF01 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D36258981EBDA0370010BF01 /* libc++.tbd */; };
+		D362589B1EBDA03D0010BF01 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D362589A1EBDA03D0010BF01 /* CFNetwork.framework */; };
+		D362589D1EBDA0450010BF01 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D362589C1EBDA0450010BF01 /* Security.framework */; };
+		D362589F1EBDA04E0010BF01 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D362589E1EBDA04E0010BF01 /* SystemConfiguration.framework */; };
+		D36258A11EBDA0C40010BF01 /* FirebaseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36258A01EBDA0C40010BF01 /* FirebaseStore.swift */; };
+		D36258A31EBDDD1F0010BF01 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D36258A21EBDDD1F0010BF01 /* GoogleService-Info.plist */; };
 		D387C74C1EBA472300507468 /* ContextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387C74B1EBA472300507468 /* ContextViewController.swift */; };
 		D387C74E1EBA483000507468 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D387C74D1EBA483000507468 /* Assets.xcassets */; };
 		D3A37B401E9C070100B8D8BA /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A37B3F1E9C070100B8D8BA /* CoreDataStack.swift */; };
@@ -66,6 +73,14 @@
 		D36233BC1E928D92000D0742 /* Chat+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Chat+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D36233C01E928E27000D0742 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		D36233C21E929288000D0742 /* AllChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllChatsViewController.swift; sourceTree = "<group>"; };
+		D36258961EBDA0250010BF01 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		D36258981EBDA0370010BF01 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		D362589A1EBDA03D0010BF01 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		D362589C1EBDA0450010BF01 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		D362589E1EBDA04E0010BF01 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D36258A01EBDA0C40010BF01 /* FirebaseStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseStore.swift; sourceTree = "<group>"; };
+		D36258A21EBDDD1F0010BF01 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D36258A41EBDE1880010BF01 /* WhaleTalk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhaleTalk.entitlements; sourceTree = "<group>"; };
 		D387C74B1EBA472300507468 /* ContextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextViewController.swift; sourceTree = "<group>"; };
 		D387C74D1EBA483000507468 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3A37B3F1E9C070100B8D8BA /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -97,6 +112,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D362589F1EBDA04E0010BF01 /* SystemConfiguration.framework in Frameworks */,
+				D362589D1EBDA0450010BF01 /* Security.framework in Frameworks */,
+				D362589B1EBDA03D0010BF01 /* CFNetwork.framework in Frameworks */,
+				D36258991EBDA0370010BF01 /* libc++.tbd in Frameworks */,
+				D36258971EBDA0250010BF01 /* libicucore.tbd in Frameworks */,
 				343D154B27B112CAE860E6E7 /* Pods_WhaleTalk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,9 +178,11 @@
 		D3C57D331E84C61000E61EDC /* WhaleTalk */ = {
 			isa = PBXGroup;
 			children = (
+				D36258A41EBDE1880010BF01 /* WhaleTalk.entitlements */,
 				D3C57D341E84C61000E61EDC /* AppDelegate.swift */,
 				D3FB9A1C1EBCF2580091AA65 /* SignUpViewController.swift */,
 				D3FB9A1E1EBCF9FF0091AA65 /* RemoteStore.swift */,
+				D36258A01EBDA0C40010BF01 /* FirebaseStore.swift */,
 				D3FB9A181EBCF1DF0091AA65 /* FavoritesVC */,
 				D387C7491EBA46A900507468 /* NewGroupVC */,
 				D387C74A1EBA46B800507468 /* NewGroupParticipantsVC */,
@@ -240,6 +262,7 @@
 				D387C74D1EBA483000507468 /* Assets.xcassets */,
 				D3C57D381E84C61000E61EDC /* Main.storyboard */,
 				D3C57D401E84C61100E61EDC /* LaunchScreen.storyboard */,
+				D36258A21EBDDD1F0010BF01 /* GoogleService-Info.plist */,
 				D3C57D431E84C61100E61EDC /* Info.plist */,
 				D3C57D3B1E84C61000E61EDC /* WhaleTalk.xcdatamodeld */,
 			);
@@ -275,6 +298,11 @@
 		F87977BD785056F3E79FD853 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D362589E1EBDA04E0010BF01 /* SystemConfiguration.framework */,
+				D362589C1EBDA0450010BF01 /* Security.framework */,
+				D362589A1EBDA03D0010BF01 /* CFNetwork.framework */,
+				D36258981EBDA0370010BF01 /* libc++.tbd */,
+				D36258961EBDA0250010BF01 /* libicucore.tbd */,
 				8F22B635355E70A6F781BED4 /* Pods_WhaleTalk.framework */,
 			);
 			name = Frameworks;
@@ -315,7 +343,13 @@
 				TargetAttributes = {
 					D3C57D301E84C61000E61EDC = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 3GG7D62YBE;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -343,6 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3C57D421E84C61100E61EDC /* LaunchScreen.storyboard in Resources */,
+				D36258A31EBDDD1F0010BF01 /* GoogleService-Info.plist in Resources */,
 				D387C74E1EBA483000507468 /* Assets.xcassets in Resources */,
 				D3C57D3A1E84C61000E61EDC /* Main.storyboard in Resources */,
 			);
@@ -414,6 +449,7 @@
 				D3062DA41EB9B55D0000C572 /* PhoneNumber+CoreDataProperties.swift in Sources */,
 				D3F106B91EA9EB6300ED416A /* Message+CoreDataClass.swift in Sources */,
 				D3A919A81EA8B908009A9A64 /* Contact+CoreDataClass.swift in Sources */,
+				D36258A11EBDA0C40010BF01 /* FirebaseStore.swift in Sources */,
 				D3062DB21EBC415F0000C572 /* FavoritesViewController.swift in Sources */,
 				D3F106B41EA8C36000ED416A /* Contact+CoreDataProperties.swift in Sources */,
 				30CABA5C1EB267C6001A7104 /* NewGroupParticipantsViewController.swift in Sources */,
@@ -562,6 +598,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEBUG_ACTIVITY_MODE = "";
 				"DEBUG_ACTIVITY_MODE[sdk=iphonesimulator*]" = disable;
+				DEVELOPMENT_TEAM = 3GG7D62YBE;
 				INFOPLIST_FILE = WhaleTalk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KMW.WhaleTalk;
@@ -576,6 +613,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEBUG_ACTIVITY_MODE = "";
+				DEVELOPMENT_TEAM = 3GG7D62YBE;
 				INFOPLIST_FILE = WhaleTalk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KMW.WhaleTalk;

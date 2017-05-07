@@ -8,6 +8,9 @@
 
 import UIKit
 import CoreData
+import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,10 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate var contactsSyncer: Syncer?
     fileprivate var contactsUploadSyncer: Syncer?
     fileprivate var firebaseSyncer: Syncer?
+    fileprivate var firebaseStore: FirebaseStore?
     
     lazy var coreDataStack = CoreDataStack(modelName: "WhaleTalk")
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        //configure firebase
+        FIRApp.configure()
+        
+
         
         let mainContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         mainContext.persistentStoreCoordinator = coreDataStack.managedContext.persistentStoreCoordinator
@@ -42,33 +51,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         contactsSyncer = Syncer(mainContext: mainContext, backgroundContext: contactsContext)
         contactsUploadSyncer = Syncer(mainContext: mainContext, backgroundContext: contactsContext)
         firebaseSyncer = Syncer(mainContext: mainContext, backgroundContext: firebaseContext)
+        let firebaseStore = FirebaseStore(context: firebaseContext)
+        self.firebaseStore = firebaseStore
         contactImporter = ContactImporter(context: mainContext)
-        importContacts(context: contactsContext)
+//75        importContacts(context: contactsContext)
+        
+        //75
+        try! FIRAuth.auth()!.signOut()
+        if firebaseStore.hasAuth() {
         
         //45
-        contactImporter?.listenForChanges()
-        
-        // Tab Bar Controller
-        let tabController = UITabBarController()
-        let vcData:[(UIViewController, UIImage, String)] = [
-            (ContactsViewController(), UIImage(named: "contact_icon")!, "Contacts"),
-            (AllChatsViewController(), UIImage(named: "chat_icon")!, "Chats"),
-            (FavoritesViewController(), UIImage(named: "favorites_icon")!, "Favorites")
+            contactImporter?.listenForChanges()
             
-        
-        ]
-        let vcs = vcData.map{
-            (vc: UIViewController, image: UIImage, title: String)-> UINavigationController in
-            if var vc = vc as? ContextViewController {
-                vc.context = mainContext
+            // Tab Bar Controller
+            let tabController = UITabBarController()
+            let vcData:[(UIViewController, UIImage, String)] = [
+                (ContactsViewController(), UIImage(named: "contact_icon")!, "Contacts"),
+                (AllChatsViewController(), UIImage(named: "chat_icon")!, "Chats"),
+                (FavoritesViewController(), UIImage(named: "favorites_icon")!, "Favorites")
+                
+            
+            ]
+            let vcs = vcData.map{
+                (vc: UIViewController, image: UIImage, title: String)-> UINavigationController in
+                if var vc = vc as? ContextViewController {
+                    vc.context = mainContext
+                }
+                let nav = UINavigationController(rootViewController: vc)
+                nav.tabBarItem.image = image
+                nav.title = title
+                return nav
             }
-            let nav = UINavigationController(rootViewController: vc)
-            nav.tabBarItem.image = image
-            nav.title = title
-            return nav
-        }
-        tabController.viewControllers = vcs
+            tabController.viewControllers = vcs
+            window?.rootViewController = tabController
+            
+        } else {
         window?.rootViewController = SignUpViewController()
+        }
         
         return true
     }
