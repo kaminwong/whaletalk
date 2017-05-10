@@ -31,6 +31,7 @@ class SignUpViewController: UIViewController {
         let continueButton = UIButton()
         continueButton.setTitle("Continue", for: .normal)
         continueButton.setTitleColor(UIColor.black, for: .normal)
+        continueButton.backgroundColor = UIColor.lightGray
         continueButton.addTarget(self, action: #selector(self.pressedContinue), for: .touchUpInside)
         view.addSubview(continueButton)
         
@@ -75,6 +76,7 @@ class SignUpViewController: UIViewController {
     }
     
     func pressedContinue(sender: UIButton) {
+        debugPrint("Pressed")
         sender.isEnabled = false
         guard let phoneNumber = phoneNumberField.text, phoneNumber.characters.count > 0 else {
             alertForError(error: "Please include your phone number")
