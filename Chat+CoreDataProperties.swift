@@ -2,7 +2,7 @@
 //  Chat+CoreDataProperties.swift
 //  WhaleTalk
 //
-//  Created by KAI MING WONG on 2017/4/28.
+//  Created by WONGKAI MING on 13/5/17.
 //  Copyright © 2017年 WONGKAI MING. All rights reserved.
 //
 
@@ -13,11 +13,12 @@ import CoreData
 extension Chat {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Chat> {
-        return NSFetchRequest<Chat>(entityName: "Chat")
+        return NSFetchRequest<Chat>(entityName: "Chat");
     }
 
     @NSManaged public var lastMessageTime: NSDate?
     @NSManaged public var name: String?
+    @NSManaged public var storageid: String?
     @NSManaged public var messages: NSSet?
     @NSManaged public var participants: NSSet?
 

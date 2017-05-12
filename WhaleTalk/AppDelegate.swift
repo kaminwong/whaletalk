@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //75        importContacts(context: contactsContext)
         
         //75
-        try! FIRAuth.auth()!.signOut()
+        //try! FIRAuth.auth()!.signOut()
         
         // Tab Bar Controller
         let tabController = UITabBarController()

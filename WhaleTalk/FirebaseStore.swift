@@ -21,7 +21,7 @@ class FirebaseStore {
     fileprivate let context: NSManagedObjectContext
     //private var tag: Bool
     fileprivate let rootRef = FIRDatabase.database().reference()
-    fileprivate var currentPhoneNumber: String? {
+    fileprivate(set) static var currentPhoneNumber: String? {
         set(phoneNumber) {
             UserDefaults.standard.set(phoneNumber, forKey: "phoneNumber")
         }
@@ -47,14 +47,49 @@ class FirebaseStore {
 //        return self.tag
         return FIRAuth.auth()?.currentUser != nil
     }
+    
+    
+    fileprivate func upload(model: NSManagedObject) {
+        guard let model = model as? FirebaseModel else {return}
+        model.upload(rootRef: rootRef, context: context)
+    }
+    
+    fileprivate func fetchAppContacts()->[Contact]{
+        do {
+            let request = NSFetchRequest<Contact>(entityName: "Contact")
+            request.predicate = NSPredicate(format: "storageid != nil")
+            let results = try self.context.fetch(request)
+            return results
+        } catch {
+            print("Error fetching Contacts")
+            return[]
+        }
+    }
+    
+    fileprivate func observeUserStatus(contact:Contact) {
+        contact.observeStatus(rootRef: rootRef, context: context)
+    }
+    
+    fileprivate func observeStatuses() {
+        let contacts = fetchAppContacts()
+        contacts.forEach(observeUserStatus)
+    }
 }
 
 extension FirebaseStore: RemoteStore {
     func startSyncing() {
+        context.perform {
+            self.observeStatuses()
+        }
     }
     
     func store(inserted: [NSManagedObject], updated: [NSManagedObject], deleted: [NSManagedObject]) {
-        return
+        inserted.forEach(upload)
+        do {
+            try context.save()
+        } catch {
+            print("Error Saving")
+        }
     }
     
     func signUp(phoneNumber: String, email: String, password: String, success: () -> (), error: (String) -> ()) {
@@ -70,9 +105,9 @@ extension FirebaseStore: RemoteStore {
                 "password": password
                 ]
                 //let uid = user["uid"] as! String
-                self.currentPhoneNumber = phoneNumber
+                FirebaseStore.currentPhoneNumber = phoneNumber
                 let usersRef = self.rootRef.child("users")
-                let uidRef = usersRef.child("uid")
+                let uidRef = usersRef.child((user?.uid)!)
                 uidRef.setValue(newUser)
                 
                 
