@@ -66,7 +66,8 @@ extension FirebaseStore: RemoteStore {
             }
             } else {
                 let newUser = [
-                "phoneNumber": phoneNumber
+                "phoneNumber": phoneNumber,
+                "password": password
                 ]
                 //let uid = user["uid"] as! String
                 self.currentPhoneNumber = phoneNumber

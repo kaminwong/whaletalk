@@ -6,7 +6,7 @@ target 'WhaleTalk' do
   use_frameworks!
 
   # Pods for WhaleTalk
-  pod 'Firebase'
+  pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
 

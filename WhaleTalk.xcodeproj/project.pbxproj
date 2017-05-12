@@ -30,6 +30,7 @@
 		D362589F1EBDA04E0010BF01 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D362589E1EBDA04E0010BF01 /* SystemConfiguration.framework */; };
 		D36258A11EBDA0C40010BF01 /* FirebaseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36258A01EBDA0C40010BF01 /* FirebaseStore.swift */; };
 		D36258A31EBDDD1F0010BF01 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D36258A21EBDDD1F0010BF01 /* GoogleService-Info.plist */; };
+		D37C8EAC1EC574350044FF39 /* FirebaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37C8EAB1EC574350044FF39 /* FirebaseModel.swift */; };
 		D387C74C1EBA472300507468 /* ContextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387C74B1EBA472300507468 /* ContextViewController.swift */; };
 		D387C74E1EBA483000507468 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D387C74D1EBA483000507468 /* Assets.xcassets */; };
 		D3A37B401E9C070100B8D8BA /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A37B3F1E9C070100B8D8BA /* CoreDataStack.swift */; };
@@ -81,6 +82,7 @@
 		D36258A01EBDA0C40010BF01 /* FirebaseStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseStore.swift; sourceTree = "<group>"; };
 		D36258A21EBDDD1F0010BF01 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D36258A41EBDE1880010BF01 /* WhaleTalk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhaleTalk.entitlements; sourceTree = "<group>"; };
+		D37C8EAB1EC574350044FF39 /* FirebaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseModel.swift; sourceTree = "<group>"; };
 		D387C74B1EBA472300507468 /* ContextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextViewController.swift; sourceTree = "<group>"; };
 		D387C74D1EBA483000507468 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3A37B3F1E9C070100B8D8BA /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				D3FB9A1C1EBCF2580091AA65 /* SignUpViewController.swift */,
 				D3FB9A1E1EBCF9FF0091AA65 /* RemoteStore.swift */,
 				D36258A01EBDA0C40010BF01 /* FirebaseStore.swift */,
+				D37C8EAB1EC574350044FF39 /* FirebaseModel.swift */,
 				D3FB9A181EBCF1DF0091AA65 /* FavoritesVC */,
 				D387C7491EBA46A900507468 /* NewGroupVC */,
 				D387C74A1EBA46B800507468 /* NewGroupParticipantsVC */,
@@ -438,6 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D37C8EAC1EC574350044FF39 /* FirebaseModel.swift in Sources */,
 				D3FB9A1D1EBCF2580091AA65 /* SignUpViewController.swift in Sources */,
 				D3F106B61EA8DCBE00ED416A /* ChatCreationDelegate.swift in Sources */,
 				D3062DA61EBAC7170000C572 /* ContactsViewController.swift in Sources */,
