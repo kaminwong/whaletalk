@@ -84,7 +84,7 @@ class FirebaseStore {
     fileprivate func observeChats() {
         let user = FIRAuth.auth()?.currentUser
         if (user != nil){
-        debugPrint(user?.uid)
+        //debugPrint(user?.uid)
         self.rootRef.child("users/"+(user?.uid)!+"/chats").observe(.childAdded, with: {
             snapshot in
             let uid = snapshot.key

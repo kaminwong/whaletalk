@@ -46,6 +46,7 @@ class NewGroupParticipantsViewController: UIViewController {
         fillViewWith(subview: tableView)
         
         let request = NSFetchRequest<Contact>(entityName: "Contact")
+        request.predicate = NSPredicate(format: "storageid != nil")
         request.sortDescriptors  = [NSSortDescriptor(key: "firstName", ascending: true)]
         
         do {
