@@ -54,6 +54,12 @@ class FirebaseStore {
         model.upload(rootRef: rootRef, context: context)
     }
     
+    fileprivate func listenForNewMessages(chat: Chat){
+        chat.observeMessages(rootRef: rootRef, context: context)
+        
+    }
+    
+    
     fileprivate func fetchAppContacts()->[Contact]{
         do {
             let request = NSFetchRequest<Contact>(entityName: "Contact")
@@ -74,12 +80,31 @@ class FirebaseStore {
         let contacts = fetchAppContacts()
         contacts.forEach(observeUserStatus)
     }
+    
+    fileprivate func observeChats() {
+        let user = FIRAuth.auth()?.currentUser
+        if (user != nil){
+        debugPrint(user?.uid)
+        self.rootRef.child("users/"+(user?.uid)!+"/chats").observe(.childAdded, with: {
+            snapshot in
+            let uid = snapshot.key
+            let chat = Chat.existing(storageid: uid, inContext: self.context) ?? Chat.new(forStorageId: uid, rootRef: self.rootRef, inContext: self.context)
+            if chat.isInserted {
+                do {
+                    try self.context.save()
+                } catch {}
+            }
+            self.listenForNewMessages(chat: chat)
+        })
+        } else {return}
+    }
 }
 
 extension FirebaseStore: RemoteStore {
     func startSyncing() {
         context.perform {
             self.observeStatuses()
+            self.observeChats()
         }
     }
     
